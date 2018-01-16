@@ -1,0 +1,14 @@
+{% if breadcrumbs %}
+<nav class="breadcrumbs">
+    <ol class="breadcrumbs__list" itemscope itemtype="http://schema.org/BreadcrumbList">
+        {% for item in breadcrumbs %}
+        <li class="breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+            <a href="{{ item.link }}" itemprop="item" class="breadcrumbs__item__link">
+                <span itemprop="name">{{ item.name }}</span>
+            </a>
+            <meta itemprop="position" content="{{ loop.index }}" />
+        </li>
+        {% endfor %}
+    </ol>
+</nav>
+{% endif %}

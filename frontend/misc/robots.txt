@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /fonts/
+Disallow: /images/
+Disallow: /*?utm_source
+
+User-Agent: Yandex
+Disallow: /fonts/
+Disallow: /images/
+Disallow: /*?utm_source
+Host: gkeurope.ru

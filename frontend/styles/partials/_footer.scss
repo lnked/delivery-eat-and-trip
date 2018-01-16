@@ -1,0 +1,12 @@
+.layout-footer {
+    clear: both;
+    position: relative;
+    height: $footer-height;
+    // margin-top: -$footer-height;
+
+    &__wrapper {
+		@include layout();
+    }
+
+    &__copiright {}
+}

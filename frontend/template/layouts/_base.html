@@ -1,0 +1,40 @@
+<!doctype html>
+<!-- (c) lnk. CELEBRO Studio | https://celebro.ru -->
+<html class="no-js" lang="ru" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+{%- include "partials/_head.html" -%}
+{%- import "macro/_macros.html" as forms -%}
+{%- import "partials/_mixins.html" as mixins -%}
+<body{%- if bodyclass -%} class="{{ bodyclass }}"{%- endif -%}>
+
+{%- include "components/_svgstore.html" -%}
+
+<div class="layout-wrapper">
+
+    {%- include "partials/_header.html" -%}
+
+    <div class="layout-wrapper__pusher">
+
+        <div class="layout-wrapper__container clearfix">
+
+            {%- include "partials/_sidebar.html" -%}
+
+            <main class="content">
+
+                {%- block breadcrumbs -%}{%- endblock -%}
+
+                {%- block content -%}{%- endblock -%}
+
+            </main>
+
+        </div>
+
+    </div>
+
+</div>
+
+{%- include "partials/_footer.html" -%}
+
+{%- include "partials/_scripts.html" -%}
+
+</body>
+</html>

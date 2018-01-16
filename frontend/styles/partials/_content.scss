@@ -1,0 +1,12 @@
+.content {
+    width: 100%;
+    float: left;
+
+    &__inner {
+        padding: 20px;
+    }
+}
+
+.sidebar + .content {
+    padding-left: $sidebar-width + $sidebar-margin;
+}

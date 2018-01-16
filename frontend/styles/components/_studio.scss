@@ -1,0 +1,24 @@
+.studio {
+    color: #fff;
+    line-height: 1;
+    font-size: 1.5rem;
+
+    &__link {
+        color: #fff;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(#fff, 0.7);
+        transition: border-color $a-time $a-func, color $a-time $a-func;
+
+        &:hover {
+            color: orange;
+            border-color: rgba(orange, 0.7);
+        }
+    }
+
+    &__name {
+        padding-left: 24px;
+        display: inline-block;
+        background: url(/images/celebro-logo.png) 0 50% no-repeat;
+        background-size: 16px 17px;
+    }
+}

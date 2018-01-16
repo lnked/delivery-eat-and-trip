@@ -1,0 +1,31 @@
+---
+title: Demo title
+current: demo
+breadcrumbs: [{
+    name: 'Главная',
+    link: './index.html'
+}, {
+    name: 'Каталог мебели',
+    link: './catalog.html'
+}]
+---
+{%- extends "layouts/_base.html" -%}
+
+{%- block breadcrumbs -%}
+    {%- include "components/_breadcrumbs.html" -%}
+{%- endblock -%}
+
+{%- block content -%}
+
+    {{
+        forms.switch(
+            'type',
+            'list' = {
+                '1': 'По зонам',
+                '2': 'По типу мебели'
+            },
+            'checked' = 1
+        )
+    }}
+
+{%- endblock -%}

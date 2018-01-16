@@ -1,0 +1,50 @@
+# Корневой файл EditorConfig
+root = true
+
+# Для всех файлов используем unix-совместимые переносы строк
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+trim_trailing_whitespace = true
+insert_final_newline = true
+charset = utf-8
+
+# отступы в 4 пробела
+[*.js]
+indent_size = 4
+indent_style = space
+
+[*.scss]
+indent_size = 4
+indent_style = tab
+
+[*.sass]
+indent_size = 4
+indent_style = tab
+
+[*.{json,js,jsx,html,css}]
+indent_style = space
+indent_size = 4
+
+# Только для файлов package.json or .travis.yml
+[{bower.json,package.json,.travis.yml}]
+indent_size = 2
+indent_style = space
+
+[.eslintrc]
+file_type = yaml
+indent_size = 2
+indent_style = space
+
+[*.md]
+syntax = markdown, md, Mark Down
+trim_trailing_whitespace = false
+
+[*.{css, scss, sass}]
+syntax = postcss, scss, sass, css
+file_type = postcss, scss, sass, css
+
+[*.nunjucks,html]
+syntax = nunjucks, jinja2, twig, html
+file_type = nunjucks, jinja2, twig, html

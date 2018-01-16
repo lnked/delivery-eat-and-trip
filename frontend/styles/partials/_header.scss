@@ -1,0 +1,15 @@
+.layout-header {
+    clear: both;
+    position: relative;
+    height: $header-height;
+
+    &__wrapper {
+		@include layout();
+    }
+
+    &__logo {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
