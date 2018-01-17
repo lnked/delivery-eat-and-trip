@@ -1,0 +1,151 @@
+.form {
+
+    &__star {
+        color: $c-red;
+    }
+
+    &__response {
+    	clear: both;
+    	font-size: 1.4rem;
+    	margin-bottom: 15px;
+
+    	&__success,
+    	&__warning {
+    		padding: 10px;
+    	}
+
+    	&__success {
+			background-color: #81d261;
+    	}
+
+    	&__warning {
+			background-color: #f16262;
+    	}
+    }
+
+    &__require {
+        color: #6a6a6a;
+		font-size: 1.4rem;
+		font-weight: 400;
+		line-height: 1;
+		margin-bottom: 20px;
+		letter-spacing: 0.047rem;
+    }
+
+    &__row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        @media (max-width: 678px) {
+        	flex-wrap: wrap;
+        }
+    }
+
+    &__col {
+        width: 50%;
+
+        @media (max-width: 678px) {
+        	width: 100%;
+        }
+
+        &--quarter {
+            width: 25%;
+
+	        @media (max-width: 678px) {
+	        	width: 100%;
+	        }
+        }
+
+        &:not(:last-child) {
+            padding-right: 10px;
+
+	        @media (max-width: 678px) {
+	        	padding-right: 0;
+	        }
+        }
+
+        &:not(:first-child) {
+            padding-left: 10px;
+
+            @media (max-width: 678px) {
+	        	padding-left: 0;
+	        }
+        }
+    }
+
+    &__input {
+	    width: 100%;
+        display: block;
+        margin-bottom: 20px;
+
+        &__title {
+            color: #16212e;
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 10px;
+            letter-spacing: 0.047rem;
+        }
+
+		&__field,
+		&__textarea {
+            color: #000;
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 1.5rem;
+            font-weight: 400;
+            border: 1px solid #fff;
+            letter-spacing: 0.045rem;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.16);
+            background-color: #fff;
+            transition: border-color $a-micro-time ease;
+
+            @include outline($c-focus-color);
+            @include placeholder(#b7b7b7, 1);
+
+            &.is-error {
+                box-shadow: 0 0 0 2px rgba(#f44336, .8);
+            }
+
+            &--text {
+        		width: 100%;
+                height: 105px;
+        		resize: vertical;
+                min-height: 105px;
+	        	max-height: 400px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        }
+
+		&__field {
+            height: 45px;
+		}
+
+        &__danger {
+            color: #c62a2a;
+            display: none;
+            margin-top: 6px;
+            font-size: 1.4rem;
+            font-weight: 400;
+            line-height: 1;
+            letter-spacing: 0.047rem;
+        }
+
+        &__field.is-error + &__danger {
+            display: block;
+        }
+    }
+
+    &__button {
+        display: block;
+        text-align: right;
+        @include outline($c-focus-color);
+
+        @media (max-width: 678px) {
+        	text-align: center;
+        }
+    }
+}

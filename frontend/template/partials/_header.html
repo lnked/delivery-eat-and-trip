@@ -5,28 +5,47 @@
 <header class="layout-header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
     <div class="layout-header__wrapper">
 
-        <div class="header-delivery">
-            Одна из самых быстрых доставок,
-            доставка от 1000 руб. в мкр. ККБ, Панорама,
-            Губернский, бесплатно
-        </div>
+        <div class="layout-header__group">
+            <div class="layout-header__fixed">
+                <div class="header-delivery">
+                    <div class="header-delivery__content">
+                        Одна из самых быстрых доставок,<br>
+                        доставка от 1000 руб. в мкр. ККБ, Панорама,<br>
+                        Губернский, бесплатно
+                    </div>
+                </div>
+            </div>
 
+            <div class="layout-header__content">
+                <div class="header-phone">
+                    <a href="tel:8-988-243-88-88" class="header-phone__tel">8 (988) 243-88-88</a>
+                    <div class="header-phone__comment">телефон для заказа</div>
+                </div>
 
-        <div class="header-phone">8 (988) 243-88-88</div>
+                <div class="header-worktime">
+                    <div class="header-worktime__title">Время работы:</div>
+                    <div class="header-worktime__time">с 08.00 до 24.00</div>
+                </div>
 
-        <div class="header-worktime">
-            Время работы:
-            Пт, Сб - с 12:00 до 4:00
-        </div>
+                <div class="header-contacts">
+                    <div class="header-contacts__title">Самовывоз:</div>
+                    <div class="header-contacts__address">г. Краснодар, МКР «Панорама»,<br>ул. Восточно-Кругликовская, 26</div>
+                </div>
 
-        <div class="header-contacts">
-            Самовывоз:
-            г. Краснодар, МКР «Панорама», ул. Жлобы, 137
-        </div>
+                <a href="/cart" class="cart-holder" id="cart-holder">
+                    <div class="cart-holder__header">
+                        <svg class="cart-holder__ico" role="img"><use xlink:href="#cart"/></svg>
+                        <div class="cart-holder__count j-cart-count">12</div>
+                    </div>
 
-        <div class="cart-holder">
-            Корзина
-            на сумму 1230 руб.
+                    <div class="cart-holder__label is-active cart-holder__nomobile j-cart-no-empty">Корзина</div>
+                    <!-- <div class="cart-holder__label is-active cart-holder__nomobile j-cart-is-empty">В корзине пусто</div> -->
+
+                    <div class="cart-holder__price is-active j-cart-no-empty">
+                        <span class="cart-holder__nomobile">на сумму</span> <span class="j-cart-amount">1230</span> руб.
+                    </div>
+                </a>
+            </div>
         </div>
 
     </div>

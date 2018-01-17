@@ -1,14 +1,78 @@
+{%- set nav = [
+    {
+        name: "Меню",
+        slug: "menu",
+        link: "./menu.html"
+    },
+    {
+        name: "Корзина",
+        slug: "cart",
+        link: "./cart.html"
+    },
+    {
+        name: "Отзывы",
+        slug: "reviews",
+        link: "./reviews.html"
+    },
+    {
+        name: "Контакты",
+        slug: "contacts",
+        link: "./contacts.html"
+    },
+    {
+        name: "Информация",
+        slug: "info",
+        link: "./info.html"
+    }
+]
+-%}
+
 <aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
     <div class="sidebar__content">
-        <a href="./index.html" class="sidebar__logo logo" rel="home" itemprop="url" accesskey="1" data-instant>
-            <span itemprop="name"></span>
-        </a>
 
-        {%- include "./_navigation.html" -%}
+        <div class="sidebar__group">
+            <a href="./index.html" class="sidebar__logo logo" rel="home" itemprop="url" accesskey="1" data-instant>
+                <span itemprop="name"></span>
+            </a>
 
-        Доставка и оплата
+            <nav class="navigation" tabindex="-1" aria-label="Основное меню">
+                <ul class="navigation__list">
+                {%- if nav -%}
+                    {%- for item in nav -%}
+                    <li class="navigation__item" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement"{% if current == item.slug %} aria-current="page"{% endif %}>
+                        <a href="{{ item.link }}" itemprop="url" class="navigation__link{% if current == item.slug %} is-current{% endif %}" accesskey="{{ loop.index }}">
+                            {% if current == item.slug %}<span class="visually-hidden">Текущий пункт:</span> {% endif %}<span class="navigation__link__name" itemprop="name">{{ item.name }}</span>
+                        </a>
+                    </li>
+                    {%- endfor -%}
+                {%- endif -%}
+                </ul>
+            </nav>
+        </div>
 
-        Мы в социальных сетях
+        <div class="sidebar__group">
+            <div class="sidebar__delivery">
+                <div class="sidebar__delivery__title">Доставка и оплата</div>
+                <div class="sidebar__delivery__banks">
+                    <img src="./images/banks/visa.svg" class="sidebar__delivery__banks__item" alt="">
+                    <img src="./images/banks/master-card.svg" class="sidebar__delivery__banks__item" alt="">
+                    <img src="./images/banks/mir.svg" class="sidebar__delivery__banks__item" alt="">
+                </div>
+            </div>
+
+            <div class="sidebar__footer">
+                <a href="https://eat-and-trip.ru/" target="_blank" rel="noopener noreferrer" class="sidebar__eat-trip eat-trip">
+                    <svg class="eat-trip__logo" role="img"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#eat-trip"></use></svg>
+                    <span class="eat-trip__title">Наша<br>сеть</span>
+                </a>
+
+                <div class="studio">
+                    Сделано&nbsp;в <a href="https://celebro.ru/" target="_blank" class="studio__link" title="Разработка и сопровождение сайта в Краснодаре" rel="noopener noreferrer">
+                        <span class="studio__underline">celebro.ru</span>
+                    </a>
+                </div>
+            </div>
+        </div>
 
     </div>
 </aside>

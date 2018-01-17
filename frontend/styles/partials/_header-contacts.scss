@@ -1,7 +1,25 @@
 .header-contacts {
-	color: #000;
+	color: $c-black;
 	font-size: 1.2rem;
 	font-weight: 400;
-	line-height: 2.08;
+	line-height: 1;
 	letter-spacing: 0.001rem;
+
+	&__title {
+		color: $c-black;
+		margin-bottom: 12px;
+
+	    .page-main & {
+	    	color: $c-yellow;
+	    }
+	}
+
+	&__address {
+		color: $c-black;
+		line-height: 1.5;
+
+	    .page-main & {
+	    	color: $c-white;
+    	}
+	}
 }

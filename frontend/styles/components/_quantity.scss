@@ -1,0 +1,75 @@
+$quantity-width: 114px;
+$quantity-height: 34px;
+
+.quantity {
+	width: $quantity-width;
+	height: $quantity-height;
+	position: relative;
+	user-select: none;
+	font-size: 0;
+	line-height: 0;
+	margin: 0 auto;
+	text-align: center;
+
+	&__count {
+		width: auto;
+		max-width: 100%;
+		min-width: $quantity-height;
+		height: $quantity-height;
+		border: 0;
+		padding: 0;
+		color: #fff;
+		outline: none;
+		user-select: none;
+		background: none;
+		text-align: center;
+		display: inline-block;
+		border-radius: $quantity-height;
+		font-size: 1.4rem;
+		font-weight: 400;
+		padding-bottom: 2px;
+		letter-spacing: 0.001rem;
+		background-color: $c-yellow;
+		background-color: #0b2441;
+	}
+
+	&__control {
+		width: $quantity-height;
+		height: $quantity-height;
+		border: 0;
+		outline: 0;
+		padding: 0;
+		color: $c-body-background;
+		cursor: pointer;
+		background: none;
+		line-height: $quantity-height;
+		position: absolute;
+		top: 0;
+		letter-spacing: 0.001rem;
+		transition: color $a-time $a-func;
+
+		font-size: 1.8rem;
+		font-weight: 400;
+		text-align: center;
+		letter-spacing: 0.054rem;
+
+		&:hover {
+			color: $c-white;
+		}
+
+		&._decrease {
+			left: 0;
+		}
+
+		&._increase {
+			right: 0;
+		}
+
+		&__ico {
+			max-width: 10px;
+			max-height: 10px;
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+}

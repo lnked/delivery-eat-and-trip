@@ -1,43 +1,36 @@
-const app = app || {};
+let app = app || {};
 
-((body) => {
-  const $body = $('body');
+((body => {
+    "use strict";
 
-  app.scroll = {
-    disableHover() {
-      let timer;
+    const $body = $('body');
 
-      $(window).on('scroll', () => {
-        clearTimeout(timer);
+    app.scroll = {
 
-        if (!$body.hasClass('disable-hover')) {
-          $body.addClass('disable-hover');
+        disableHover () {
+            let timer;
+
+            $(window).on('scroll', () => {
+                clearTimeout(timer);
+
+                if (!$body.hasClass('disable-hover')) {
+                    $body.addClass('disable-hover');
+                }
+
+                timer = setTimeout(() => {
+                    $body.removeClass('disable-hover');
+                }, 500);
+            });
+        },
+
+        bind() {
+            $('html').scrollWithEase();
+        },
+
+        init() {
+            this.bind();
+            this.disableHover();
         }
+    };
 
-        timer = setTimeout(() => {
-          $body.removeClass('disable-hover');
-        }, 500);
-      });
-    },
-
-    bind() {
-      $('html').scrollWithEase();
-
-      $(window)
-        .on('scroll', () => {
-          if (
-            $(window).scrollTop() >
-                        $(document).height() - $(window).height()
-          ) {
-            // вызов апи
-          }
-        })
-        .scroll();
-    },
-
-    init() {
-      this.bind();
-      this.disableHover();
-    }
-  };
-})(document.body);
+}))(document.body);

@@ -3,7 +3,7 @@
 <html class="no-js" lang="ru" itemscope="itemscope" itemtype="http://schema.org/WebPage">
 {%- include "partials/_head.html" -%}
 {%- import "macro/_macros.html" as forms -%}
-<body{%- if bodyclass -%} class="{{ bodyclass }}"{%- endif -%}>
+<body class="page-{{ current }}">
 
 {%- include "components/_svgstore.html" -%}
 
@@ -11,20 +11,16 @@
 
     {%- include "partials/_header.html" -%}
 
-    <div class="layout-wrapper__pusher">
+    <div class="layout-wrapper__container clearfix">
 
-        <div class="layout-wrapper__container clearfix">
+        {%- block sidebar -%}{%- endblock -%}
 
-            {%- block sidebar -%}{%- endblock -%}
-
-            <main class="content">
-                <div class="content__inner">
-                    {%- block breadcrumbs -%}{%- endblock -%}
-                    {%- block content -%}{%- endblock -%}
-                </div>
-            </main>
-
-        </div>
+        <main id="content" class="content site-content" itemprop="mainContentOfPage">
+            <div class="content__inner">
+                {%- block breadcrumbs -%}{%- endblock -%}
+                {%- block content -%}{%- endblock -%}
+            </div>
+        </main>
 
     </div>
 

@@ -1,0 +1,103 @@
+.payment {
+	&__cost {
+		font-size: 1.6rem;
+		line-height: 1;
+		margin-bottom: 15px;
+	}
+
+	&__number {
+		font-size: 1.8rem;
+		line-height: 1;
+		margin-bottom: 20px;
+	}
+
+	&__title {
+		font-size: 1.8rem;
+		font-weight: 400;
+		margin-bottom: 10px;
+	}
+
+	&__columns {
+		width: 100%;
+		display: flex;
+		align-items: stretch;
+		justify-content: flex-start;
+		margin-bottom: 20px;
+
+		@media (max-width: 678px) {
+			flex-wrap: wrap;
+		}
+
+		&__item {
+			width: 33.333333333%;
+
+			&:not(:last-child) {
+				padding-right: 5px;
+			}
+
+			&:not(:first-child) {
+				padding-left: 5px;
+			}
+
+			@media (max-width: 678px) {
+				width: 100%;
+
+				&:not(:last-child) {
+					padding-right: 0;
+					margin-bottom: 15px;
+				}
+
+				&:not(:first-child) {
+					padding-left: 0;
+				}
+			}
+		}
+	}
+
+	&__status {
+		color: $c-green;
+	}
+
+	&__text {
+    	color: #6c7477;
+		font-size: 1.4rem;
+		line-height: 1.6;
+		padding-top: 20px;
+	}
+
+    &__info {
+        font-size: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 25px;
+
+        &__button {
+            display: inline-block;
+
+            &:not(:last-child) {
+                margin-right: 20px;
+            }
+        }
+    }
+
+    &__failed {
+		color: $c-red;
+        font-size: 2rem;
+        line-height: 1;
+        margin-bottom: 20px;
+    }
+
+    &__description {
+        max-width: 650px;
+    	font-size: 1.6rem;
+    	line-height: 1.6;
+        margin-bottom: 20px;
+
+        p {
+        	&:not(:last-child) {
+        		margin-bottom: 15px;
+        	}
+        }
+    }
+}

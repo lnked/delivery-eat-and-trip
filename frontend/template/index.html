@@ -1,6 +1,6 @@
 ---
 title: Главная
-current: index
+current: main
 description: Главная
 keywords: Главная
 ---
@@ -11,7 +11,31 @@ keywords: Главная
 {%- endblock -%}
 
 {%- block content -%}
-    <h1>Корзина</h1>
-    <h3>укажите адрес доставки</h3>
-    <p>* обязательно для заполнения </p>
+
+    <div class="slider__content">
+        <div class="slider__title">
+            меню<br>на сегодня
+        </div>
+
+        <a href="./menu.html" class="slider__button">посмтреть предложение</a>
+    </div>
+
+    <ul class="slider__dots">
+        <li class="slider__dots__item">
+            <button type="button" class="slider__dots__button is-active"></button>
+        </li>
+
+        <li class="slider__dots__item">
+            <button type="button" class="slider__dots__button"></button>
+        </li>
+
+        <li class="slider__dots__item">
+            <button type="button" class="slider__dots__button"></button>
+        </li>
+
+        <li class="slider__dots__item">
+            <button type="button" class="slider__dots__button"></button>
+        </li>
+    </ul>
+
 {%- endblock -%}

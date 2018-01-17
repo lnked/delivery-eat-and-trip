@@ -2,23 +2,66 @@
     clear: both;
     position: relative;
     height: $footer-height;
-    // margin-top: -$footer-height;
-    background-color: #f3f4f6;
-    padding-top: 35px;
 
     &__wrapper {
     	width: 100%;
+    	height: 100%;
+		padding-left: $sidebar-width;
+    }
+
+    &__content {
+    	width: 100%;
+    	height: 100%;
     	display: flex;
     	align-items: flex-start;
     	justify-content: space-between;
-		padding-left: $sidebar-width + $sidebar-margin;
-		padding-right: $sidebar-margin;
+    	padding: 0 $sidebar-margin;
+    	background-color: #f3f4f6;
+
+    	.page-main & {
+    		background-color: rgba(#f3f4f6, .9);
+    	}
     }
 
     &__block {
+    	width: 33.333333333%;
+    	height: 100%;
 		color: #161616;
 		font-size: 1.5rem;
 		font-weight: 400;
+
+		background-image: url(../images/sea-waves.png);
+		background-position: 0 50%;
+		background-repeat: no-repeat;
+		background-size: 71px 42px;
+
+		&__content {
+			padding-left: 120px;
+		}
+
+		&__making {
+			height: 100%;
+	    	display: flex;
+	    	align-items: center;
+	    	justify-content: space-between;
+			background-repeat: no-repeat;
+			background-position: 35px 50%;
+
+			&--farm-products {
+				background-image: url(../images/farm-products.png);
+				background-size: 68px 68px;
+			}
+
+			&--menu {
+				background-image: url(../images/menu.png);
+				background-size: 67px 68px;
+			}
+
+			&--payment {
+				background-image: url(../images/credit-card.png);
+				background-size: 74px 51px;
+			}
+		}
 
 		&__title {
 			color: #232323;
@@ -30,7 +73,7 @@
 			text-transform: uppercase;
 		}
 
-		&__content {
+		&__text {
 			color: #161616;
 			font-size: 1.5rem;
 			font-weight: 400;

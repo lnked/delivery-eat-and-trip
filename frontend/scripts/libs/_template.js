@@ -1,23 +1,22 @@
-((d) => {
-  window.template = (id, data, precompile) => {
-    if (typeof precompile === 'undefined') {
-      precompile = false;
-    }
-
-    if (d.getElementById(id) !== null) {
-      const pattern = d.getElementById(id).innerHTML;
-
-      if (precompile) {
-        if (!window.precompiledT7) {
-          window.precompiledT7 = Template7.compile(pattern);
+;((d => {
+    window.template = (id, data, precompile) => {
+        if (typeof precompile === 'undefined') {
+            precompile = false;
         }
 
-        return window.precompiledT7(data || {});
-      }
+        if (d.getElementById(id) !== null) {
+            const pattern = d.getElementById(id).innerHTML;
 
-      return Template7.compile(pattern)(data || {});
+            if (precompile) {
+                if (!window.precompiledT7) {
+                    window.precompiledT7 = Template7.compile(pattern);
+                }
+
+                return window.precompiledT7(data || {});
+            }
+
+            return Template7.compile(pattern)(data || {});
+        }
+        return '';
     }
-
-    return '';
-  };
-})(document);
+}))(document);

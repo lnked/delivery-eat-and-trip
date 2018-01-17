@@ -19,9 +19,8 @@ html {
 }
 
 html, body {
-    overscroll-behavior-y: none; /* disable pull to refresh */ // contain
+    overscroll-behavior-y: none;
 }
-
 
 body {
     color: $c-text;
@@ -31,12 +30,6 @@ body {
     line-height: 1.42857143;
     background-color: $c-body-background;
 
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-/*
-body {
     overflow-y: scroll;
     overflow-x: hidden;
     overflow-y: -moz-scrollbars-none;
@@ -45,8 +38,15 @@ body {
     &::-webkit-scrollbar {
         width: 0;
     }
+
+	&.page-main {
+		overflow: hidden;
+	    background-image: url(../images/dish.jpg);
+	    background-repeat: no-repeat;
+	    background-position: 50% 0;
+	    background-size: cover;
+	}
 }
-*/
 
 body, input, textarea, select, button {
     font-synthesis: none;

@@ -1,20 +1,45 @@
 .layout-header {
     position: relative;
     height: $header-height;
-	background-color: $c-yellow;
 
     &__wrapper {
     	width: 100%;
-    	display: flex;
-    	align-items: flex-start;
-    	justify-content: space-between;
-		padding-left: $sidebar-width + $sidebar-margin;
-		padding-right: $sidebar-margin;
+    	height: 100%;
+		padding-left: $sidebar-width;
     }
 
-    &__logo {
-        position: absolute;
-        left: 0;
-        top: 0;
+    &__group {
+    	width: 100%;
+    	height: 100%;
+    	display: flex;
+    	align-items: center;
+    	justify-content: space-between;
+		background-color: $c-yellow;
+
+		.page-main & {
+			background-color: transparent;
+		}
+    }
+
+    &__fixed {
+		height: 100%;
+    	flex-grow: 0;
+    	flex-shrink: 0;
+		flex-basis: 32%;
+		padding-left: $sidebar-margin;
+	    background-image: url(../images/delivery-truck.png);
+		background-color: $c-yellow;
+	    background-position: calc(100% - 20px) 50%;
+	    background-repeat: no-repeat;
+    }
+
+    &__content {
+    	flex-grow: 0;
+    	flex-shrink: 0;
+    	flex-basis: calc(100% - 32%);
+    	display: flex;
+    	align-items: center;
+    	justify-content: space-between;
+		padding: 0 $sidebar-margin / 2;
     }
 }

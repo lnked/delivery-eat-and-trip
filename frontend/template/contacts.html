@@ -11,7 +11,55 @@ keywords: Главная
 {%- endblock -%}
 
 {%- block content -%}
-    <h1>Корзина</h1>
-    <h3>укажите адрес доставки</h3>
-    <p>* обязательно для заполнения </p>
+
+    <h1>Контакты</h1>
+
+    <div class="contacts__map">
+        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A5885d6bc28c3bbe779609d7cea966ebde582866b4179fdaab8ad81170ae432e4&amp;source=constructor" width="100%" height="465" frameborder="0"></iframe>
+    </div>
+
+    <div class="contacts__row">
+        <div class="contacts__item contacts__item--marker">
+            г. Краснодар, МКР «Панорама»,<br>
+            ул. Восточно-Кругликовская, 26
+        </div>
+
+        <div class="contacts__item contacts__item--phone">
+            Тел: <a href="tel:89882436688">8 (988) 243-66-88</a>
+        </div>
+
+        <div class="contacts__item contacts__item--clock">
+            с 08.00 до 24.00 каждый день.
+        </div>
+    </div>
+
+    <form action="" method="POST" class="contacts__feedback feedback">
+        <a name="feedback"></a>
+        <div class="feedback__title">
+            ОБРАТНАЯ СВЯЗЬ
+        </div>
+        <div class="form__require">
+            <span class="form__star">*</span> обязательно для заполнения
+        </div>
+        <input type="hidden" name="_backuri" value="L2NvbnRhY3Rz"><input type="hidden" name="authenticity_token" value="ZjU5ZGI5MmFmZjM1YzU3NjhmNzBiOTM0MWI3NjkxNTZlMjg1MjZlNjU2MDg0ZDFmYTU3ZTFhZmJkNjFjYTEzZA=="><label class="form__input"><span class="form__input__title">Представьтесь <span class="form__star">*</span></span><input name="name" class="form__input__field "></label><label class="form__input"><span class="form__input__title">Тема сообщения</span><input name="theme" class="form__input__field " title="Тема сообщения"></label>
+        <div class="form__row">
+            <div class="form__col">
+                <label class="form__input"><span class="form__input__title">Электронная почта <span class="form__star">*</span></span><input name="email" class="form__input__field " title="Электронная почта"></label>
+            </div>
+            <div class="form__col">
+                <label class="form__input"><span class="form__input__title">Номер телефона</span><input name="phone" class="form__input__field mask-phone" title="Номер телефона"></label>
+            </div>
+        </div>
+        <label class="form__input"><span class="form__input__title">Текст сообщения <span class="form__star">*</span></span><textarea name="message" class="form__input__field form__input__field--text" title="Текст сообщения"></textarea></label><footer class="cart__footer">
+        <div class="cart__footer__first">
+            <p>
+                Отправляя форму вы соглашаетесь на <a href="./privacy-policy.html" target="_blank" rel="noopener noreferrer">правила обработки персональных данных</a>.
+            </p>
+        </div>
+        <div class="form__button">
+            <button type="submit" class="button">Отправить сообщение</button>
+        </div>
+        </footer>
+    </form>
+
 {%- endblock -%}

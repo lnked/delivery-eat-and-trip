@@ -1,24 +1,25 @@
 .studio {
-    color: #fff;
-    line-height: 1;
-    font-size: 1.5rem;
+    color: #4e4747;
+    padding: 6px 5px;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    display: inline-block;
+    background-color: $c-yellow;
 
     &__link {
-        color: #fff;
+        color: $c-black;
+        padding: 1px 2px;
         text-decoration: none;
-        border-bottom: 1px solid rgba(#fff, 0.7);
-        transition: border-color $a-time $a-func, color $a-time $a-func;
+        transition: background-color $a-micro-time $a-func, border-color $a-micro-time $a-func, color $a-micro-time $a-func;
 
         &:hover {
-            color: orange;
-            border-color: rgba(orange, 0.7);
+            color: $c-yellow;
+            background-color: $c-black;
         }
     }
 
-    &__name {
-        padding-left: 24px;
-        display: inline-block;
-        background: url(/images/celebro-logo.png) 0 50% no-repeat;
-        background-size: 16px 17px;
+    &__underline {
+    	display: inline;
+        border-bottom: 1px solid rgba($c-black, .5);
     }
 }

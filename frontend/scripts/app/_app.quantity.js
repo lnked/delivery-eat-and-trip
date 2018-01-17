@@ -1,158 +1,154 @@
 const app = app || {};
 
-(((body) => {
-  app.quantity = {
+((body => {
+    'use strict';
 
-    config: {
-      element: '.j-quantity',
-      input: '.j-quantity-count',
-      control: '.j-quantity-control',
-      complete: null,
-      afterClick: null
-    },
+    app.quantity = {
 
-    element: null,
+        config: {
+            element: '.j-quantity',
+            input: '.j-quantity-count',
+            control: '.j-quantity-control',
+            complete: null,
+            afterClick: null
+        },
 
-    getValue() {
-      return parseInt(this.element.find(this.config.input).val(), 10);
-    },
+        element: null,
 
-    setValue(quantity) {
-      let min = 1;
-      let max = 100;
+        getValue: function() {
+            return parseInt(this.element.find(this.config.input).val(), 10);
+        },
 
-      if (this.element.data('min')) {
-        min = this.element.data('min');
-      }
+        setValue: function(quantity) {
+            let min = 1;
+            let max = 100;
 
-      if (this.element.data('max')) {
-        max = this.element.data('max');
-      }
+            if (this.element.data('min')) {
+                min = this.element.data('min');
+            }
 
-      if (quantity > max) {
-        quantity = max;
-      }
+            if (this.element.data('max')) {
+                max = this.element.data('max');
+            }
 
-      if (quantity < min) {
-        quantity = min;
-      }
+            if (quantity > max) {
+                quantity = max;
+            }
 
-      this.element.find(this.config.input).val(quantity);
-    },
+            if (quantity < min) {
+                quantity = min;
+            }
 
-    increase(quantity) {
-      quantity += 1;
+            this.element.find(this.config.input).val(quantity);
+        },
 
-      this.setValue(quantity);
-    },
+        increase: function(quantity) {
+            quantity += 1;
 
-    decrease(quantity) {
-      if (quantity > 1) {
-        quantity -= 1;
-      }
+            this.setValue(quantity);
+        },
 
-      this.setValue(quantity);
-    },
+        decrease: function(quantity) {
+            if (quantity > 1) {
+                quantity -= 1;
+            }
 
-    afterClick($control) {
-      if (typeof (this.config.afterClick) == 'function') {
-        this.config.afterClick.call(null, $control);
-      }
-    },
+            this.setValue(quantity);
+        },
 
-    callback() {
-      if (typeof (this.element.data('product')) !== 'undefined' && typeof (this.config.complete) == 'function') {
-        this.config.complete.call(null, this.element, this.element.data('product'), this.getValue());
-      }
-    },
+        afterClick: function($control) {
+            if (typeof (this.config.afterClick) == 'function')
+            {
+                this.config.afterClick.call(null, $control);
+            }
+        },
 
-    keys() {
-      const _this_ = this;
-      let role = '';
+        callback: function() {
+            if (typeof (this.element.data('product')) !== 'undefined' && typeof (this.config.complete) == 'function')
+            {
+                this.config.complete.call(null, this.element, this.element.data('product'), this.getValue());
+            }
+        },
 
-      $('body').on('keydown', _this_.config.input, (e) => {
-        if ([0, 8, 13, 38, 40].indexOf(e.which) < 0 && (e.which < 48 || e.which > 57)) {
-          return !1;
+        keys: function() {
+            const _this_ = this;
+            let role = '';
+
+            $('body').on('keydown', _this_.config.input, function(e) {
+                if ([0, 8, 13, 38, 40].indexOf( e.which ) < 0 && (e.which < 48 || e.which > 57)) {
+                    return !1;
+                }
+            });
+
+            $('body').on('keydown', _this_.config.input, function(e) {
+                if ([38, 40].includes(e.keyCode))
+                {
+                    e.preventDefault();
+
+                    role = {
+                        38: 'increase',
+                        40: 'decrease'
+                    };
+
+                    _this_.element = $(this).closest(_this_.config.element);
+
+                    _this_[role[e.keyCode]](parseInt(_this_.element.find(_this_.config.input).val()));
+
+                    _this_.callback();
+
+                    return false;
+                }
+            });
+        },
+
+        bind: function() {
+            let role = '';
+            const _this_ = this;
+
+            function process($element)
+            {
+                _this_.afterClick($element.closest('.j-quantity'));
+
+                _this_.element = $element.closest(_this_.config.element);
+
+                role = $element.data('role');
+
+                if(['increase', 'decrease'].includes(role))
+                {
+                    _this_[role](parseInt(_this_.element.find(_this_.config.input).val(), 10));
+                }
+
+                _this_.callback();
+            }
+
+            $('body').off('input.quantity').on('input.quantity', _this_.config.input, function(e) {
+                const val = parseInt($(this).val(), 10);
+
+                if (val < 1) {
+                    $(this).val(1);
+                }
+
+                process($(this));
+            });
+
+            $('body').off('click.quantity').on('click.quantity', _this_.config.control, function(e) {
+                e.preventDefault();
+                process($(this));
+                return !1;
+            });
+        },
+
+        make: function(config) {
+            const _this_ = this;
+
+            if (typeof config !== 'undefined')
+            {
+                _this_.config = app._extend(_this_.config, config);
+            }
+
+            _this_.bind();
+            _this_.keys();
         }
-      });
 
-      $('body').on('keydown', _this_.config.input, function(e) {
-        if ([38, 40].includes(e.keyCode)) {
-          e.preventDefault();
-
-          role = {
-            38: 'increase',
-            40: 'decrease'
-          };
-
-          _this_.element = $(this).closest(_this_.config.element);
-
-          _this_[role[e.keyCode]](parseInt(_this_.element.find(_this_.config.input).val()));
-
-          _this_.callback();
-
-          return false;
-        }
-      });
-    },
-
-    bind() {
-      let role = '';
-      const _this_ = this;
-
-      $('body').off('click.quantity').on('click.quantity', _this_.config.control, function(e) {
-        e.preventDefault();
-
-        _this_.afterClick($(this).closest('.j-quantity'));
-
-        _this_.element = $(this).closest(_this_.config.element);
-
-        role = $(this).data('role');
-
-        if (['increase', 'decrease'].includes(role)) {
-          _this_[role](parseInt(_this_.element.find(_this_.config.input).val()));
-        }
-
-        _this_.callback();
-
-        return !1;
-      });
-    },
-
-    make(config) {
-      const _this_ = this;
-
-      if (typeof config !== 'undefined') {
-        _this_.config = app._extend(_this_.config, config);
-      }
-
-      _this_.bind();
-      _this_.keys();
-    }
-
-  };
+    };
 }))(document.body);
-
-// app.quantity.make({
-//     afterClick: function($element) {
-//         $element.addClass('is-disabled');
-//     },
-//     complete: function($element, id, count) {
-//         $element.removeClass('is-disabled');
-
-//         const $product = $element.closest('.j-product');
-//         const $amount = $product.find('.j-product-amount');
-
-//         $amount.html(currency($amount.data('price') * count));
-
-//         _this_.calculate();
-
-//         console.log("id :", id, $amount.data('price'), count);
-//     }
-// });
-
-// <div class="quantity j-quantity clearfix" data-product="1000" data-min="1" data-max="999">
-//     <button type="button" class="quantity__control _decrease j-quantity-control" data-role="decrease"></button>
-//     <input type="text" name="count[1000]" value="1" data-role="quantity-input" class="quantity__count j-quantity-count" maxlength="3" autocomplete="off">
-//     <button type="button" class="quantity__control _increase j-quantity-control" data-role="increase"></button>
-// </div>

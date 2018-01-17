@@ -1,0 +1,118 @@
+---
+title: Главная
+current: cart
+description: Главная
+keywords: Главная
+---
+{%- extends "layouts/_base.html" -%}
+
+{%- block sidebar -%}
+    {%- include "partials/_sidebar.html" -%}
+{%- endblock -%}
+
+{%- block content -%}
+
+    <h1>Корзина</h1>
+    <h3>укажите адрес доставки</h3>
+
+    <div class="cart">
+        <form action="" method="POST" class="cart__form form">
+            <a name="delivery"></a>
+
+            <div class="form__require">
+                <span class="form__star">*</span> обязательно для заполнения
+            </div>
+
+            <label class="form__input">
+                <span class="form__input__title">Ф.И.О. <span class="form__star">*</span></span>
+                <input class="form__input__field" title="Ф.И.О." name="name">
+                <div class="form__input__danger">
+                    Не заполнено поле
+                </div>
+            </label>
+
+            <div class="form__row">
+                <div class="form__col">
+                    <label class="form__input"><span class="form__input__title">Номер телефона <span class="form__star">*</span></span>
+                        <input class="form__input__field mask-phone" title="Номер телефона" name="phone">
+                        <div class="form__input__danger">
+                            Неправильный формат номера телефона
+                        </div>
+                    </label>
+                </div>
+
+                <div class="form__col">
+                    <label class="form__input"><span class="form__input__title">Электронная почта <span class="form__star">*</span></span>
+                        <input class="form__input__field" title="Электронная почта" name="email">
+                    <div class="form__input__danger">
+                        Неправильный формат электронной почты
+                    </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form__row">
+                <div class="form__col form__col--quarter">
+                    <label class="form__input"><span class="form__input__title">Улица <span class="form__star">*</span></span>
+                        <input class="form__input__field" title="Улица" name="street">
+                        <div class="form__input__danger">
+                            Укажите название улицы
+                    </div>
+                    </label>
+                </div>
+
+                <div class="form__col form__col--quarter">
+                    <label class="form__input"><span class="form__input__title">Дом <span class="form__star">*</span></span>
+                        <input class="form__input__field" title="Номер дома" name="house">
+                        <div class="form__input__danger">
+                            Укажите номер дома
+                        </div>
+                    </label>
+                </div>
+
+                <div class="form__col form__col--quarter">
+                    <label class="form__input"><span class="form__input__title">Подъезд</span>
+                        <input class="form__input__field" title="Номер подъезда" name="entrance">
+                        <div class="form__input__danger">
+                            Укажите номер подъезда
+                        </div>
+                    </label>
+                </div>
+
+                <div class="form__col form__col--quarter">
+                    <label class="form__input"><span class="form__input__title">№ квартиры <span class="form__star">*</span></span>
+                        <input class="form__input__field" title="Номер квартиры" name="apartment">
+                        <div class="form__input__danger">
+                            Укажите номер квартиры
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form__row">
+                <label class="form__input"><span class="form__input__title">Комментарий к заказу</span><textarea class="form__input__field form__input__field--text" title="Номер квартиры" name="comment"></textarea></label>
+            </div>
+
+            <footer class="cart__footer">
+                <div class="cart__footer__first">
+                    <p>
+                        Отправляя форму вы соглашаетесь на <a href="./privacy-policy.html" target="_blank" rel="noopener noreferrer">правила обработки персональных данных</a>.
+                    </p>
+                </div>
+                <div class="form__button">
+                    <button type="submit" class="button">продолжить</button>
+                </div>
+            </footer>
+        </form>
+    </div>
+
+    <nav class="steps">
+        <ol class="steps__list">
+            <li class="steps__item is-passed"><a href="/cart/checkout" class="steps__item__name">ваш заказ</a></li>
+            <li class="steps__item is-passed"><a href="/cart/delivery" class="steps__item__name">адрес доставки</a></li>
+            <li class="steps__item"><span class="steps__item__name">оплата</span></li>
+            <li class="steps__item"><span class="steps__item__name">подтверждение</span></li>
+        </ol>
+    </nav>
+
+{%- endblock -%}

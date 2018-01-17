@@ -1,186 +1,200 @@
 var app = app || {};
 
-(function(body) {
-  const $body = $('body');
+(function(body){
+    "use strict";
 
-  app.slider = {
-    config: {
-      slider: '.j-slider',
-      item: '.j-slider-item',
-      prev: '.j-slider-prev',
-      next: '.j-slider-next',
-      point: '.j-slider-point',
-      height: '.j-slider-height-trigger'
-    },
+    const $body = $('body');
 
-    limit: 0,
+    app.slider = {
 
-    current: 1,
+        config: {
+            slider: '.j-slider',
+            item: '.j-slider-item',
+            prev: '.j-slider-prev',
+            next: '.j-slider-next',
+            point: '.j-slider-point',
+            height: '.j-slider-height-trigger'
+        },
 
-    autoplay: true,
+        limit: 0,
 
-    autoplaySpeed: 4000,
+        current: 1,
 
-    timeout: 500,
+        autoplay: true,
 
-    interval: null,
+        autoplaySpeed: 4000,
 
-    lock() {
-      $(`${this.config.prev}, ${this.config.next}, ${this.config.point}`).addClass('is-lock');
-    },
+        timeout: 500,
 
-    unlock() {
-      $(`${this.config.prev}, ${this.config.next}, ${this.config.point}`).removeClass('is-lock');
-    },
+        interval: null,
 
-    reset() {
-      const _this = this;
+        lock () {
+            $(`${this.config.prev}, ${this.config.next}, ${this.config.point}`).addClass('is-lock');
+        },
 
-      const $active = $(`${_this.config.item}.is-active`);
+        unlock () {
+            $(`${this.config.prev}, ${this.config.next}, ${this.config.point}`).removeClass('is-lock');
+        },
 
-      $active.removeClass('is-animate');
+        reset () {
+            const _this = this;
 
-      $(`${_this.config.point}.is-current`).removeClass('is-current');
+            const $active = $(`${_this.config.item}.is-active`);
 
-      setTimeout(() => {
-        $active.removeClass('is-active');
-      }, _this.timeout);
-    },
+            $active.removeClass('is-animate');
 
-    go(slide, start) {
-      const _this = this;
+            $(`${_this.config.point}.is-current`).removeClass('is-current');
 
-      _this.reset();
-      _this.current = slide;
+            setTimeout(() => {
+                $active.removeClass('is-active');
+            }, _this.timeout);
+        },
 
-      $(`${this.config.point}[data-index="${slide}"]`).addClass('is-current');
+        go (slide, start) {
+            const _this = this;
 
-      const $slide = $(`${this.config.item}[data-index="${slide}"]`);
+            _this.reset();
+            _this.current = slide;
 
-      $slide.addClass('is-active');
+            $(`${this.config.point}[data-index="${slide}"]`).addClass('is-current');
 
-      setTimeout(() => {
-        $slide.addClass('is-animate');
-      }, 16);
+            const $slide = $(`${this.config.item}[data-index="${slide}"]`);
 
-      setTimeout(() => {
-        _this.unlock();
+            $slide.addClass('is-active');
 
-        if (start) {
-          _this.start();
+            setTimeout(() => {
+                $slide.addClass('is-animate');
+            }, 16);
+
+            setTimeout(() => {
+                _this.unlock();
+
+                if (start) {
+                    _this.start();
+                }
+
+            }, _this.timeout);
+        },
+
+        prev (start) {
+            this.lock();
+
+            let prev = this.current - 1;
+
+            if (prev <= 0) {
+                prev = this.limit;
+            }
+
+            this.go(prev, start);
+        },
+
+        next (start) {
+            this.lock();
+
+            let next = this.current + 1;
+
+            if (next > this.limit) {
+                next = 1;
+            }
+
+            this.go(next, start);
+        },
+
+        size () {
+            const _this = this;
+
+            if ($(`${_this.config.slider}`).length)
+            {
+                setTimeout(() => {
+                    $(`${_this.config.slider}`).each(function(){
+                        const $slider = $(this);
+                        const $items = $slider.find(`${_this.config.item}`);
+                        const height = $items.eq(0).find(`${_this.config.height}`).outerHeight();
+
+                        $slider.css({'height': height});
+                        $items.css({'height': height});
+                        $slider.addClass('is-inited');
+                        $items.addClass('is-inited');
+                    });
+                }, 250);
+            }
+        },
+
+        prepare () {
+            this.size();
+            this.limit = $(`${this.config.point}`).length;
+        },
+
+        events () {
+            const _this = this;
+
+            let debounce = null;
+
+            $(window).on('resize', (e) => {
+                clearTimeout(debounce);
+
+                debounce = setTimeout(() => {
+                    _this.size();
+                }, 50);
+            });
+
+            $body.on('click', `${this.config.prev}`, (e) => {
+                e.preventDefault();
+
+                _this.stop();
+
+                _this.prev(true);
+
+                return false;
+            });
+
+            $body.on('click', `${this.config.next}`, (e) => {
+                e.preventDefault();
+
+                _this.stop();
+
+                _this.next(true);
+
+                return false;
+            });
+
+            $body.on('click', `${this.config.point}`, (e) => {
+                e.preventDefault();
+
+                _this.stop();
+
+                _this.lock();
+
+                const $this = $(e.currentTarget);
+
+                _this.go(parseInt($this.data('index'), 10), true);
+
+                return false;
+            });
+        },
+
+        stop () {
+            clearInterval(this.interval);
+        },
+
+        start () {
+            const _this = this;
+
+            if (_this.autoplay) {
+                _this.stop();
+
+                _this.interval = setInterval(() => {
+                    _this.next(false);
+                }, _this.autoplaySpeed);
+            }
+        },
+
+        init () {
+            this.prepare();
+            this.events();
+            this.start();
         }
-      }, _this.timeout);
-    },
 
-    prev(start) {
-      this.lock();
+    };
 
-      let prev = this.current - 1;
-
-      if (prev <= 0) {
-        prev = this.limit;
-      }
-
-      this.go(prev, start);
-    },
-
-    next(start) {
-      this.lock();
-
-      let next = this.current + 1;
-
-      if (next > this.limit) {
-        next = 1;
-      }
-
-      this.go(next, start);
-    },
-
-    size() {
-      const _this = this;
-
-      if ($(`${_this.config.slider}`).length) {
-        $(`${_this.config.slider}`).each(function() {
-          const $slider = $(this);
-          const $items = $slider.find(`${_this.config.item}`);
-          const height = $items
-            .eq(0)
-            .find(`${_this.config.height}`)
-            .outerHeight();
-
-          $slider.css({ height });
-          $items.css({ height });
-        });
-      }
-    },
-
-    prepare() {
-      this.size();
-      this.limit = $(`${this.config.point}`).length;
-    },
-
-    events() {
-      const _this = this;
-
-      $(window).on('resize', (e) => {
-        _this.size();
-      });
-
-      $body.on('click', `${this.config.prev}`, (e) => {
-        e.preventDefault();
-
-        _this.stop();
-
-        _this.prev(true);
-
-        return false;
-      });
-
-      $body.on('click', `${this.config.next}`, (e) => {
-        e.preventDefault();
-
-        _this.stop();
-
-        _this.next(true);
-
-        return false;
-      });
-
-      $body.on('click', `${this.config.point}`, (e) => {
-        e.preventDefault();
-
-        _this.stop();
-
-        _this.lock();
-
-        const $this = $(e.currentTarget);
-
-        _this.go(parseInt($this.data('index'), 10), true);
-
-        return false;
-      });
-    },
-
-    stop() {
-      clearInterval(this.interval);
-    },
-
-    start() {
-      const _this = this;
-
-      if (_this.autoplay) {
-        _this.stop();
-
-        _this.interval = setInterval(() => {
-          _this.next(false);
-        }, _this.autoplaySpeed);
-      }
-    },
-
-    init() {
-      this.prepare();
-      this.events();
-      this.start();
-    }
-  };
-}(document.body));
+})(document.body);

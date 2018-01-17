@@ -1,7 +1,37 @@
 .header-phone {
-	color: #000;
 	font-size: 1.9rem;
 	font-weight: 400;
-	line-height: 1.32;
+	line-height: 1;
+	white-space: nowrap;
+	padding-left: 22px;
 	letter-spacing: 0.001rem;
+	background: url(../images/phone-stroke.svg) 0 1px no-repeat;
+	background-size: 13px 13px;
+
+	.page-main & {
+		background-image: url(../images/phone-yellow.svg);
+	}
+
+	&__tel {
+		color: $c-black;
+		display: block;
+		margin-bottom: 12px;
+		text-decoration: none;
+
+	    .page-main & {
+	    	color: $c-white;
+	    }
+	}
+
+	&__comment {
+		color: $c-black;
+		font-size: 1.2rem;
+		font-weight: 400;
+		line-height: 1;
+		letter-spacing: 0.001rem;
+
+	    .page-main & {
+	    	color: $c-yellow;
+	    }
+	}
 }
