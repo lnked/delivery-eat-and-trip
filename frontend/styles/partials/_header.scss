@@ -1,10 +1,15 @@
 .layout-header {
-    clear: both;
     position: relative;
     height: $header-height;
+	background-color: $c-yellow;
 
     &__wrapper {
-		@include layout();
+    	width: 100%;
+    	display: flex;
+    	align-items: flex-start;
+    	justify-content: space-between;
+		padding-left: $sidebar-width + $sidebar-margin;
+		padding-right: $sidebar-margin;
     }
 
     &__logo {

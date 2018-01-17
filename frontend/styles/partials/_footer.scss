@@ -3,10 +3,37 @@
     position: relative;
     height: $footer-height;
     // margin-top: -$footer-height;
+    background-color: #f3f4f6;
+    padding-top: 35px;
 
     &__wrapper {
-		@include layout();
+    	width: 100%;
+    	display: flex;
+    	align-items: flex-start;
+    	justify-content: space-between;
+		padding-left: $sidebar-width + $sidebar-margin;
+		padding-right: $sidebar-margin;
     }
 
-    &__copiright {}
+    &__block {
+		color: #161616;
+		font-size: 1.5rem;
+		font-weight: 400;
+
+		&__title {
+			color: #232323;
+			font-family: $font-pf-din;
+			font-size: 1.8rem;
+			font-weight: 700;
+			line-height: 1.76;
+			letter-spacing: 0.001rem;
+			text-transform: uppercase;
+		}
+
+		&__content {
+			color: #161616;
+			font-size: 1.5rem;
+			font-weight: 400;
+		}
+    }
 }

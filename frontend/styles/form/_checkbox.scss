@@ -39,7 +39,7 @@ $checkbox-size: 18px;
             left: 4px;
             top: 5px;
             border-image: none;
-            border-color: $c-green;
+            border-color: $c-yellow;
             border-style: solid;
             border-width: 0 0 3px 3px;
             transform: rotate(-45deg);
@@ -67,7 +67,7 @@ $checkbox-size: 18px;
     }
 
     &__input:checked + &__visible {
-        border-color: $c-green;
+        border-color: $c-yellow;
 
         &:before {
             display: block;
