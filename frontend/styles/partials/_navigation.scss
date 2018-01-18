@@ -10,6 +10,10 @@
     	list-style: none;
     	padding-right: 20px;
 
+		@media (min-width: 1560px) {
+			padding-left: 20px;
+		}
+
 		@media (max-width: 667px) {
 			padding-right: 0;
 		}
@@ -20,6 +24,10 @@
 
     	&:not(:last-child) {
 			margin-bottom: 25px;
+
+			@media (min-width: 1560px) {
+				margin-bottom: 35px;
+			}
     	}
     }
 

@@ -30,19 +30,15 @@
 		@media (max-width: 667px) {
 			padding: 15px;
     		align-items: center;
+
+	    	.page-main & {
+				background-color: rgba(#000, .7);
+	    	}
 		}
 
 		@media (max-width: 375px) {
 			padding: 10px;
 		}
-
-    	.page-main & {
-    		background-color: rgba(#f3f4f6, .9);
-
-			@media (max-width: 667px) {
-				background-color: rgba(#000, .7);
-			}
-    	}
     }
 
     &__block {

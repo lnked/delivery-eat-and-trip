@@ -4,6 +4,10 @@
 		padding: 20px;
 		margin-bottom: 40px;
 
+		@media (min-width: 1560px) {
+			margin-bottom: 50px;
+		}
+
 		@media (max-width: 667px) {
 			padding: 0;
 		}
@@ -17,6 +21,10 @@
 		margin-bottom: 40px;
 		text-shadow: 0 0.2rem 1.3rem rgba(0, 0, 0, 0.69);
 		letter-spacing: 0.001rem;
+
+		@media (min-width: 1560px) {
+			font-size: 12rem;
+		}
 
 		@media (max-width: 667px) {
 			font-size: 5.5rem;
