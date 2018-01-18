@@ -2,11 +2,20 @@
     clear: both;
     position: relative;
     height: $footer-height;
+    z-index: 10;
+
+	@media (max-width: 667px) {
+	    height: 90px;
+	}
 
     &__wrapper {
     	width: 100%;
     	height: 100%;
 		padding-left: $sidebar-width;
+
+		@media (max-width: 667px) {
+			padding-left: 0;
+		}
     }
 
     &__content {
@@ -18,25 +27,49 @@
     	padding: 0 $sidebar-margin;
     	background-color: #f3f4f6;
 
+		@media (max-width: 667px) {
+			padding: 15px;
+    		align-items: center;
+		}
+
+		@media (max-width: 375px) {
+			padding: 10px;
+		}
+
     	.page-main & {
     		background-color: rgba(#f3f4f6, .9);
+
+			@media (max-width: 667px) {
+				background-color: rgba(#000, .7);
+			}
     	}
     }
 
     &__block {
     	width: 33.333333333%;
-    	height: 100%;
 		color: #161616;
 		font-size: 1.5rem;
 		font-weight: 400;
 
-		background-image: url(../images/sea-waves.png);
-		background-position: 0 50%;
-		background-repeat: no-repeat;
-		background-size: 71px 42px;
+		@media (min-width: 668px) {
+    		height: 100%;
+			background-image: url(../images/sea-waves.png);
+			background-position: 0 50%;
+			background-repeat: no-repeat;
+			background-size: 71px 42px;
+		}
+
+		@media (max-width: 667px) {
+			padding: 0 2px;
+		}
 
 		&__content {
 			padding-left: 120px;
+
+			@media (max-width: 667px) {
+			    padding-left: 0;
+			    padding-top: 30px;
+			}
 		}
 
 		&__making {
@@ -47,19 +80,37 @@
 			background-repeat: no-repeat;
 			background-position: 35px 50%;
 
+			@media (max-width: 667px) {
+    			align-items: flex-start;
+		    	justify-content: center;
+			    background-position: 50% 0;
+			}
+
 			&--farm-products {
 				background-image: url(../images/farm-products.png);
 				background-size: 68px 68px;
+
+				@media (max-width: 667px) {
+					background-size: 22px 22px;
+				}
 			}
 
 			&--menu {
 				background-image: url(../images/menu.png);
 				background-size: 67px 68px;
+
+				@media (max-width: 667px) {
+					background-size: 21px 22px;
+				}
 			}
 
 			&--payment {
 				background-image: url(../images/credit-card.png);
 				background-size: 74px 51px;
+
+				@media (max-width: 667px) {
+					background-size: 32px 22px;
+				}
 			}
 		}
 
@@ -71,12 +122,25 @@
 			line-height: 1.76;
 			letter-spacing: 0.001rem;
 			text-transform: uppercase;
+
+			@media (max-width: 667px) {
+				font-size: 1.4rem;
+				text-align: center;
+
+				.page-main & {
+					color: #fff;
+				}
+			}
 		}
 
 		&__text {
 			color: #161616;
 			font-size: 1.5rem;
 			font-weight: 400;
+
+			@media (max-width: 667px) {
+				display: none;
+			}
 		}
     }
 }

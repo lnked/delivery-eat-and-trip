@@ -1,9 +1,18 @@
 .navigation {
 	outline: none;
 
+	@media (max-width: 667px) {
+		margin-top: 15px;
+		margin-bottom: 30px;
+	}
+
     &__list {
     	list-style: none;
     	padding-right: 20px;
+
+		@media (max-width: 667px) {
+			padding-right: 0;
+		}
     }
 
     &__item {
@@ -26,8 +35,22 @@
 		border-bottom: 5px solid transparent;
 		transition: border-color $a-micro-time $a-func;
 
+		@media (max-width: 667px) {
+			border: 0;
+			padding: 15px;
+		}
+
+		@media (max-width: 375px) {
+			padding: 10px;
+		}
+
         &.is-current {
 			border-color: $c-yellow;
+
+			@media (max-width: 667px) {
+				color: $c-black;
+				background-color: $c-yellow;
+			}
         }
     }
 }

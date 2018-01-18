@@ -20,7 +20,12 @@
 
 	    .page-main & {
 	    	color: $c-white;
+	    	text-shadow: 0 0 1px #000;
 	    }
+
+		@media (max-width: 667px) {
+			margin-bottom: 0;
+		}
 	}
 
 	&__comment {
@@ -33,5 +38,9 @@
 	    .page-main & {
 	    	color: $c-yellow;
 	    }
+
+		@media (max-width: 667px) {
+			display: none;
+		}
 	}
 }

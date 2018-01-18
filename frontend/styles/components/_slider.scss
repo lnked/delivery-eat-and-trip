@@ -3,6 +3,10 @@
 	&__content {
 		padding: 20px;
 		margin-bottom: 40px;
+
+		@media (max-width: 667px) {
+			padding: 0;
+		}
 	}
 
 	&__title {
@@ -13,6 +17,11 @@
 		margin-bottom: 40px;
 		text-shadow: 0 0.2rem 1.3rem rgba(0, 0, 0, 0.69);
 		letter-spacing: 0.001rem;
+
+		@media (max-width: 667px) {
+			font-size: 5.5rem;
+			font-weight: 600;
+		}
 	}
 
 	&__button {
@@ -40,6 +49,10 @@
 		align-items: center;
 		justify-content: flex-start;
 		padding-left: 20px;
+
+		@media (max-width: 667px) {
+			padding-left: 0;
+		}
 
 		&__item {
 			&:not(:last-child) {

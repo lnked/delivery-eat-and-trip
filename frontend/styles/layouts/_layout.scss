@@ -6,6 +6,10 @@ $footer-offset: $footer-height + $footer-margin;
     overflow: hidden;
     position: relative;
 
+	@media (max-width: 667px) {
+		min-height: calc(100% - 90px);
+	}
+
     &__container {
     	width: 100%;
     }

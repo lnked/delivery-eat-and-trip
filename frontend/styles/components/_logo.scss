@@ -2,7 +2,15 @@
 	width: 90px;
 	height: 115px;
 	display: block;
+	font-size: 0;
+	text-indent: -1000px;
 	background-image: url(../images/logo-white.svg);
 	background-repeat: no-repeat;
 	background-size: 90px 115px;
+
+	@media (max-width: 667px) {
+		width: 52px;
+		height: 65px;
+		background-size: 52px 65px;
+	}
 }

@@ -1,4 +1,4 @@
-.header-delivery {
+.delivery-panel {
 	height: 100%;
 	color: $c-black;
 	display: flex;
@@ -7,6 +7,15 @@
 	font-weight: 400;
 	line-height: 1.87;
 	letter-spacing: 0.001rem;
+
+	@media (max-width: 667px) {
+		padding: 25px 15px;
+		background-color: $c-yellow;
+	}
+
+	@media (max-width: 375px) {
+		padding: 20px 10px;
+	}
 
     &__content {
     	padding-left: 30px;

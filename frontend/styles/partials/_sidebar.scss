@@ -9,12 +9,34 @@
     margin-right: -$sidebar-width;
 	background-color: $c-dark;
 
+	@media (max-width: 667px) {
+		width: 100%;
+		display: none;
+		max-width: 480px;
+		transform: translate3d(-100%, 0, 0);
+		background-color: rgba($c-black, .85);
+		transition: transform $a-micro-time $a-func, opacity $a-micro-time $a-func;
+
+		.menu-visible & {
+			display: block;
+		}
+
+		.menu-animate & {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
+		}
+	}
+
 	.page-main & {
 		background-color: rgba($c-black, .85);
 	}
 
 	&__logo {
 		margin-bottom: 50px;
+
+		@media (max-width: 667px) {
+			display: none !important;
+		}
 	}
 
 	&__eat-trip {
@@ -34,6 +56,16 @@
 		flex-direction: column;
 		justify-content: space-between;
 		padding: 30px 20px;
+
+		@media (max-width: 667px) {
+			padding: 15px 0;
+			flex-wrap: nowrap;
+			overflow-y: auto;
+		}
+
+		@media (max-width: 375px) {
+			padding: 10px 0;
+		}
 	}
 
 	&__delivery {
@@ -47,6 +79,16 @@
 			line-height: 1;
 			letter-spacing: 0.001rem;
 			margin-bottom: 15px;
+
+			@media (max-width: 667px) {
+				padding: 0 15px;
+				font-size: 1.8rem;
+				font-weight: 500;
+			}
+
+			@media (max-width: 375px) {
+				padding: 0 10px;
+			}
 		}
 
 		&__banks {
@@ -54,15 +96,37 @@
 			align-items: center;
 			justify-content: flex-start;
 
+			@media (max-width: 667px) {
+				padding: 15px;
+				justify-content: center;
+				background-color: $c-white;
+			}
+
+			@media (max-width: 375px) {
+				padding: 10px;
+			}
+
 			&__item {
 				max-width: 42px;
 
+				@media (max-width: 667px) {
+					max-width: calc(24% - 10px);
+				}
+
 				&:not(:last-child) {
 					margin-right: 5px;
+
+					@media (max-width: 667px) {
+						margin-right: 10px;
+					}
 				}
 
 				&:not(:first-child) {
 					margin-left: 5px;
+
+					@media (max-width: 667px) {
+						margin-left: 10px;
+					}
 				}
 			}
 		}
@@ -72,5 +136,13 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+
+		@media (max-width: 667px) {
+			padding: 0 15px;
+		}
+
+		@media (max-width: 375px) {
+			padding: 0 10px;
+		}
 	}
 }

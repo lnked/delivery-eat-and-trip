@@ -5,6 +5,10 @@
 	line-height: 1;
 	letter-spacing: 0.001rem;
 
+	@media (max-width: 667px) {
+		display: none;
+	}
+
 	&__title {
 		color: $c-black;
 		margin-bottom: 12px;

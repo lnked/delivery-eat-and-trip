@@ -40,11 +40,14 @@ body {
     }
 
 	&.page-main {
-		overflow: hidden;
 	    background-image: url(../images/dish.jpg);
 	    background-repeat: no-repeat;
 	    background-position: 50% 0;
 	    background-size: cover;
+
+	    @media (min-height: 480px) {
+	    	overflow: hidden;
+	    }
 	}
 }
 

@@ -9,8 +9,11 @@
 
 		&:not(:last-child) {
 			margin-bottom: 20px;
-			padding-bottom: 20px;
-			border-bottom: 1px solid lighten(#000, 70%);
+
+			@media (min-width: 668px) {
+				padding-bottom: 20px;
+				border-bottom: 1px solid lighten(#000, 70%);
+			}
 		}
 
 		@media (max-width: 1100px) {
