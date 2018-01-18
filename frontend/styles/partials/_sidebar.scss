@@ -91,6 +91,14 @@
 			}
 		}
 
+		&__panel {
+			display: none;
+
+			@media (max-width: 667px) {
+				display: block;
+			}
+		}
+
 		&__banks {
 			display: flex;
 			align-items: center;

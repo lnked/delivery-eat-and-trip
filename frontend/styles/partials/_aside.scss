@@ -9,7 +9,7 @@
 	display: none;
 	padding-top: $header-height;
 	padding-bottom: $footer-height;
-	background-color: rgba($c-white, .4);
+	background-color: rgba($c-white, .8);
 
     overflow-y: scroll;
     overflow-x: hidden;
@@ -20,7 +20,7 @@
         width: 0;
     }
 
-    @media (min-width: 1440px) {
+    @media (min-width: 1560px) {
     	display: block;
     }
 
